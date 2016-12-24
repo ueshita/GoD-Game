@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+
+export LINK="clang"
+export BIN="bin/native"
+export PKG_CONFIG_LIBDIR="$PWD/api/native"
+
+make -j`nproc` DFLAGS="-Iapi/native " CFLAGS="-g3 " LDFLAGS="-g " "$@"
+

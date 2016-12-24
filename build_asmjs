@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+export BIN="bin/asmjs"
+export EXT="html"
+export LINK="emcc"
+export CC="emcc"
+export CFLAGS="--target=asmjs-unknown-emscripten -S "
+export DFLAGS="-Iapi/ems -mtriple=asmjs-unknown-emscripten "
+export LDFLAGS="-O2 --use-preload-plugins --preload-file res/"
+
+make clean
+make "DFLAGS=$DFLAGS" "$@"
+
